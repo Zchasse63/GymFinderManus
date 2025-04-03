@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 
 // Supabase credentials
-const supabaseUrl = 'https://ebkqhegzdlegzrcwamnp.supabase.co';
+const supabaseUrl = 'https://ntthbfdaijwdqgxzugpi.supabase.co';
 const supabaseAnonKey = 'sbp_5bb5e5b3afb78fffc390e159aca0ab33358b7e73';
 
 // Create Supabase client
