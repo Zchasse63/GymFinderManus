@@ -1,0 +1,318 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Default light theme variables with vibrant purple as primary */
+  --primary: #8B5CF6; /* Vibrant purple (Violet-500) */
+  --primary-dark: #7C3AED; /* Violet-600 */
+  --primary-light: #A78BFA; /* Violet-400 */
+  --secondary: #C084FC; /* Purple-400 */
+  --accent: #F472B6; /* Pink-400 for accent */
+  
+  --background: #FFFFFF;
+  --foreground: #111827; /* Gray-900 */
+  
+  --card: #FFFFFF;
+  --card-foreground: #111827;
+  
+  --border: #E5E7EB; /* Gray-200 */
+  --input: #E5E7EB;
+  
+  --muted: #F3F4F6; /* Gray-100 */
+  --muted-foreground: #6B7280; /* Gray-500 */
+  
+  --success: #10B981; /* Emerald-500 */
+  --warning: #F59E0B; /* Amber-500 */
+  --error: #EF4444; /* Red-500 */
+  
+  --radius: 0.5rem;
+}
+
+.dark {
+  --primary: #A78BFA; /* Violet-400 */
+  --primary-dark: #8B5CF6; /* Violet-500 */
+  --primary-light: #C4B5FD; /* Violet-300 */
+  --secondary: #D8B4FE; /* Purple-300 */
+  --accent: #F9A8D4; /* Pink-300 */
+  
+  --background: #111827; /* Gray-900 */
+  --foreground: #F9FAFB; /* Gray-50 */
+  
+  --card: #1F2937; /* Gray-800 */
+  --card-foreground: #F9FAFB;
+  
+  --border: #374151; /* Gray-700 */
+  --input: #374151;
+  
+  --muted: #374151; /* Gray-700 */
+  --muted-foreground: #9CA3AF; /* Gray-400 */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors 
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 
+    disabled:opacity-50 disabled:pointer-events-none;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary/90;
+  }
+  
+  .btn-outline {
+    @apply border border-input bg-background hover:bg-muted hover:text-foreground;
+  }
+  
+  .btn-ghost {
+    @apply hover:bg-muted hover:text-foreground;
+  }
+  
+  .input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm 
+    placeholder:text-muted-foreground focus-visible:outline-none 
+    focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  
+  .card {
+    @apply rounded-lg border border-border bg-card text-card-foreground shadow-sm;
+  }
+  
+  .card-header {
+    @apply flex flex-col space-y-1.5 p-6;
+  }
+  
+  .card-title {
+    @apply text-2xl font-semibold leading-none tracking-tight;
+  }
+  
+  .card-description {
+    @apply text-sm text-muted-foreground;
+  }
+  
+  .card-content {
+    @apply p-6 pt-0;
+  }
+  
+  .card-footer {
+    @apply flex items-center p-6 pt-0;
+  }
+  
+  /* Navigation styles */
+  .nav-container {
+    @apply sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur;
+  }
+  
+  .nav-inner {
+    @apply container flex h-16 items-center justify-between;
+  }
+  
+  .nav-logo {
+    @apply flex items-center space-x-2;
+  }
+  
+  .nav-links {
+    @apply hidden md:flex md:items-center md:space-x-4;
+  }
+  
+  .nav-link {
+    @apply text-sm font-medium transition-colors hover:text-primary;
+  }
+  
+  /* Search bar styles */
+  .search-container {
+    @apply relative flex items-center;
+  }
+  
+  .search-input {
+    @apply h-10 w-full rounded-full border border-input bg-background pl-10 pr-4 
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary;
+  }
+  
+  .search-icon {
+    @apply absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground;
+  }
+  
+  /* Category filter styles */
+  .category-container {
+    @apply flex items-center space-x-2 overflow-x-auto pb-2 pt-4 scrollbar-hide;
+  }
+  
+  .category-item {
+    @apply flex flex-col items-center space-y-1 rounded-md px-3 py-2 hover:bg-muted;
+  }
+  
+  .category-icon {
+    @apply h-6 w-6 text-muted-foreground;
+  }
+  
+  .category-label {
+    @apply text-xs font-medium;
+  }
+  
+  .category-item.active {
+    @apply bg-primary/10 text-primary;
+  }
+  
+  .category-item.active .category-icon {
+    @apply text-primary;
+  }
+  
+  /* Filter styles */
+  .filter-container {
+    @apply flex items-center space-x-2 py-4;
+  }
+  
+  .filter-button {
+    @apply inline-flex items-center space-x-1 rounded-full border border-input px-3 py-1.5 text-sm 
+    hover:bg-muted;
+  }
+  
+  .filter-icon {
+    @apply h-4 w-4;
+  }
+  
+  /* Gym card styles */
+  .gym-card {
+    @apply overflow-hidden rounded-xl border border-border transition-all hover:shadow-md;
+  }
+  
+  .gym-image-container {
+    @apply relative aspect-square overflow-hidden;
+  }
+  
+  .gym-image {
+    @apply h-full w-full object-cover transition-transform hover:scale-105;
+  }
+  
+  .gym-favorite {
+    @apply absolute right-3 top-3 rounded-full bg-white/80 p-1.5 text-muted-foreground 
+    hover:bg-white hover:text-primary;
+  }
+  
+  .gym-badge {
+    @apply absolute left-3 top-3 rounded-md bg-primary px-2 py-1 text-xs font-medium text-white;
+  }
+  
+  .gym-info {
+    @apply p-4;
+  }
+  
+  .gym-name {
+    @apply text-lg font-medium;
+  }
+  
+  .gym-location {
+    @apply text-sm text-muted-foreground;
+  }
+  
+  .gym-rating {
+    @apply mt-1 flex items-center space-x-1;
+  }
+  
+  .gym-rating-star {
+    @apply h-4 w-4 text-yellow-400;
+  }
+  
+  .gym-rating-value {
+    @apply text-sm font-medium;
+  }
+  
+  .gym-rating-count {
+    @apply text-sm text-muted-foreground;
+  }
+  
+  .gym-features {
+    @apply mt-2 flex flex-wrap gap-1;
+  }
+  
+  .gym-feature {
+    @apply rounded-full bg-muted px-2 py-0.5 text-xs font-medium;
+  }
+  
+  .gym-price {
+    @apply mt-2 text-sm font-medium;
+  }
+  
+  .gym-hours {
+    @apply mt-1 text-sm text-muted-foreground flex items-center;
+  }
+  
+  .gym-amenities {
+    @apply mt-2 flex flex-wrap gap-1;
+  }
+  
+  .gym-amenity {
+    @apply flex items-center space-x-1 rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary;
+  }
+  
+  .gym-amenity-icon {
+    @apply h-3 w-3;
+  }
+  
+  /* Map styles */
+  .map-container {
+    @apply h-full w-full rounded-lg border border-border;
+  }
+  
+  .map-view {
+    @apply fixed inset-0 z-50 bg-background;
+  }
+  
+  .map-view-header {
+    @apply sticky top-0 z-10 bg-background border-b border-border p-4;
+  }
+  
+  .map-view-content {
+    @apply flex h-[calc(100vh-64px)];
+  }
+  
+  .map-view-sidebar {
+    @apply w-1/3 h-full overflow-y-auto border-r border-border p-4;
+  }
+  
+  .map-view-main {
+    @apply w-2/3 h-full;
+  }
+  
+  .map-toggle {
+    @apply fixed bottom-6 left-1/2 z-10 -translate-x-1/2 rounded-full bg-primary px-4 py-2 
+    text-sm font-medium text-white shadow-lg transition-transform hover:scale-105;
+  }
+  
+  .map-marker {
+    @apply bg-primary text-white rounded-full p-1 flex items-center justify-center;
+  }
+  
+  .map-preview {
+    @apply absolute z-20 bg-white rounded-lg shadow-lg p-3 w-64;
+  }
+  
+  /* Utility classes */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
